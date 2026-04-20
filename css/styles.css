@@ -2009,6 +2009,11 @@ p {
 		padding: 8px 16px;
 	}
 
+	.hero {
+		padding-top: 80px;
+		min-height: 100svh;
+	}
+
 	.hero-title__line {
 		font-size: clamp(3rem, 9vw, 5rem);
 	}
