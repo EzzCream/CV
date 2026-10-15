@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { contactSchema, fieldErrors } from '@/lib/contact';
+import { contactSchema } from '@/lib/contact';
+import { fieldErrors } from '@/lib/contact-fields';
 import { buildEmail } from '@/lib/mail';
 
 const valid = { name: 'Ana López', email: 'ana@example.com', reason: 'job', message: 'Hola Oscar, tenemos una vacante para ti.', startedAt: 1, locale: 'es' };

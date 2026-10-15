@@ -151,8 +151,9 @@ export function Header({ locale, other, ui, nav, sections, otherSections }: Prop
       </a>
       <header className={solid ? 'top solid' : 'top'}>
         <div className="wrap">
-          <a className="brand" href="#top" aria-label={nav.home}>
-            oscar.rodriguez<i aria-hidden="true" />
+          <a className="brand" href="#top">
+            oscar.rodriguez<span className="sr">, {nav.home}</span>
+            <i aria-hidden="true" />
           </a>
           <nav ref={linksRef} className="links" aria-label={locale === 'es' ? 'Principal' : 'Main'}>
             {links}

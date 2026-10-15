@@ -2,7 +2,8 @@ import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 import { Resend } from 'resend';
 import { siteUrl } from '@/lib/content';
-import { contactSchema, type ContactResponse, type FieldError } from '@/lib/contact';
+import { contactSchema } from '@/lib/contact';
+import type { ContactResponse, Field, FieldError } from '@/lib/contact-fields';
 import { buildEmail } from '@/lib/mail';
 
 const MAX_BODY = 10 * 1024;
@@ -65,7 +66,7 @@ export async function POST(req: Request) {
 
   const parsed = contactSchema.safeParse(body);
   if (!parsed.success) {
-    const fields: Partial<Record<'name' | 'email' | 'message', FieldError>> = {};
+    const fields: Partial<Record<Field, FieldError>> = {};
     for (const issue of parsed.error.issues) {
       const key = issue.path[0];
       if (key === 'name' || key === 'email' || key === 'message') fields[key] ??= issue.message as FieldError;

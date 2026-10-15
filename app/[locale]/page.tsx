@@ -42,10 +42,11 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                   {P.person.firstName.split(' ')[0]}
                   <span>{P.person.lastName}</span>
                 </h1>
-                <p className="hero-lead bl rise" style={{ '--d': 2 } as React.CSSProperties}>
+                {/* sin animación de entrada: es el elemento LCP y tiene que pintarse con el primer cuadro (PERF-02) */}
+                <p className="hero-lead bl">
                   {D.hero.lead}
                 </p>
-                <div className="cta rise" style={{ '--d': 3 } as React.CSSProperties}>
+                <div className="cta rise" style={{ '--d': 2 } as React.CSSProperties}>
                   <a className="btn pri" href={`#${S.contact}`}>
                     {D.hero.ctaContact}
                   </a>
@@ -57,7 +58,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
               <div className="draw-area" id="drawArea" aria-hidden="true" />
             </div>
             <div className="hero-foot">
-              <a className="next bl rise" style={{ '--d': 7 } as React.CSSProperties} href={`#${S.about}`}>
+              <a className="next bl rise" style={{ '--d': 4 } as React.CSSProperties} href={`#${S.about}`}>
                 <ArrowDown /> {D.hero.next}
               </a>
             </div>

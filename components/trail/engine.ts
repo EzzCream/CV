@@ -337,6 +337,8 @@ export function startTrail(o: TrailOptions): () => void {
   const agents = createAgents(heroField);
 
   let raf = 0, running = false, t0 = 0, ambient = 0, heroVisible = true, destroyed = false;
+  // costo promedio (ms) de un cuadro del hero
+  let cost = 0, slow = false, skip = 0;
   // puntero en coordenadas de pantalla; null cuando no hay mouse en la ventana
   let ptr: Point | null = null, lastHero: Point | null = null, lastPage: Point | null = null, lastMoveHero = 0, overHero = false;
   let lastVW = 0, lastVH = 0, resizeT = 0;
@@ -529,7 +531,9 @@ export function startTrail(o: TrailOptions): () => void {
     raf = 0;
     if (!running || document.hidden) return;
     let busy = false;
-    if (heroVisible) {
+    // en equipos lentos el hero se dibuja cuadro de por medio: el rastro sigue, la página no se traba
+    if (heroVisible && (!slow || ++skip % 2 === 0)) {
+      const t = performance.now();
       const idle = !overHero && now - lastMoveHero > 1400 && now - t0 > 1200;
       const head = agents.update(now, idle);
       if (idle) heroField.head = head;
@@ -537,8 +541,10 @@ export function startTrail(o: TrailOptions): () => void {
       if (++ambient % 150 === 0) heroField.inject(heroField.W * (0.5 + Math.random() * 0.45), Math.random() * heroField.H, 12 + Math.random() * 16, 0.5);
       heroField.step();
       heroField.draw(now);
+      cost = cost * 0.9 + (performance.now() - t) * 0.1;
+      slow = cost > 9;
       busy = true;
-    }
+    } else if (heroVisible) busy = true;
     if (pageField.awake) {
       const total = pageField.step();
       pageField.draw(now);
@@ -579,7 +585,7 @@ export function startTrail(o: TrailOptions): () => void {
     wake();
   };
   // el canvas no espera a la fuente: se carga antes de pintar el primer cuadro
-  Promise.all([document.fonts.load(`600 14px ${o.trailFont}`), document.fonts.load(`700 96px ${o.displayFont}`)]).then(go, go);
+  Promise.all([document.fonts.load(`600 14px ${o.trailFont}`), document.fonts.load(`500 96px ${o.displayFont}`)]).then(go, go);
 
   return () => {
     destroyed = true;

@@ -10,14 +10,26 @@ export function Trail() {
   useEffect(() => {
     const hero = document.getElementById('top'), heroCanvas = document.getElementById('heroTrail');
     if (!pageRef.current || !hero || !(heroCanvas instanceof HTMLCanvasElement)) return;
-    return startTrail({
-      hero,
-      heroCanvas,
-      drawArea: document.getElementById('drawArea'),
-      pageCanvas: pageRef.current,
-      trailFont: trail.style.fontFamily,
-      displayFont: display.style.fontFamily,
-    });
+    const pageCanvas = pageRef.current;
+    let stop: (() => void) | undefined;
+    // arranca cuando el navegador queda libre: así el texto del hero se pinta primero
+    const begin = () =>
+      (stop = startTrail({
+        hero,
+        heroCanvas,
+        drawArea: document.getElementById('drawArea'),
+        pageCanvas,
+        trailFont: trail.style.fontFamily,
+        displayFont: display.style.fontFamily,
+      }));
+    // Safari no tiene requestIdleCallback
+    const hasIdle = 'requestIdleCallback' in window;
+    const idle = hasIdle ? requestIdleCallback(begin, { timeout: 1200 }) : window.setTimeout(begin, 300);
+    return () => {
+      if (hasIdle) cancelIdleCallback(idle);
+      else clearTimeout(idle);
+      stop?.();
+    };
   }, []);
   return <canvas ref={pageRef} className="trail-canvas" aria-hidden="true" />;
 }

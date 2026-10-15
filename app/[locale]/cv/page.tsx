@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getDictionary, isLocale, profile as P } from '@/lib/content';
-import { cvBody, cvDisplay } from '@/lib/fonts';
+import { cvBody, cvDisplay } from '@/lib/fonts-cv';
 import { fill, formatRange } from '@/lib/format';
 
 type Props = { params: Promise<{ locale: string }> };

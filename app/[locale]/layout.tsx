@@ -75,7 +75,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       </head>
       <body>
         {children}
-        <Analytics />
+        {process.env.VERCEL && <Analytics />}
       </body>
     </html>
   );

@@ -4,10 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 import Script from 'next/script';
 import type { Dictionary } from '@/content/schema';
 import type { Locale } from '@/lib/content';
-import { fieldErrors, reasons, type ContactResponse, type FieldError } from '@/lib/contact';
+import { fieldErrors, reasons, type ContactResponse, type Field, type FieldError } from '@/lib/contact-fields';
 import { fill } from '@/lib/format';
 
-type Field = 'name' | 'email' | 'message';
 type Props = { locale: Locale; form: Dictionary['contact']['form']; errors: Dictionary['contact']['errors'] };
 
 declare global {
