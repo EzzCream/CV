@@ -261,3 +261,12 @@ El prototipo aprobado (v15) se portó sin cambios visuales:
 - `components/Header.tsx`: menú, idioma (conserva la sección), tema, indicador deslizante y fondo sólido al salir del hero.
 - El cambio de idioma ahora navega entre `/es` y `/en` en lugar de re-renderizar en el mismo documento.
 - Ajuste: el fondo sólido del header se activa con `rootMargin: -80px` (antes `-56px`). Al saltar a «Sobre mí», el `scroll-padding-top` de 64 px dejaba visible el pie del hero detrás del header transparente.
+
+## Ajustes por la revisión de calidad (14 oct 2026)
+
+- La entrada del hero dura 510 ms en total (`--d` 0, 2 y 4 a 90 ms) para cumplir la regla de la guía (menos de 600 ms).
+- El párrafo del hero no tiene animación de entrada. Es el elemento LCP: con fade, Lighthouse lo cuenta después de toda la hidratación (LCP simulado de 4 s contra 2 s sin fade).
+- El rastro arranca con `requestIdleCallback` (máximo 1,2 s) y en equipos lentos dibuja el hero cuadro de por medio.
+- Sobre rojo se usa `--on-red`: blanco en claro y casi negro en oscuro. Blanco sobre el rojo del tema oscuro daba 3.02:1.
+- Excepción consciente a la regla de "nada en bucle infinito": el cursor del logo y el punto de ArgusEye parpadean. Son parte del motivo del cursor y Oscar pidió que ArgusEye destacara.
+- Solo se precargan las fuentes del primer pantallazo (Cormorant 500 e IBM Plex Sans). Las fuentes estáticas del CV viven en `lib/fonts-cv.ts` para que no se precarguen en el sitio.

@@ -18,6 +18,7 @@ npm run dev
 | `npm run build` | Build de producción (valida los JSON de contenido) |
 | `npm run check` | Lint, tipos, pruebas unitarias y Knip |
 | `npm test` | Pruebas unitarias (Vitest) |
+| `npm run test:e2e` | Pruebas de punta a punta y accesibilidad (Playwright + axe) en escritorio y móvil |
 | `npm run cv:pdf` | Regenera `public/cv/*.pdf` desde `/es/cv` y `/en/cv` (con el sitio corriendo y Google Chrome instalado) |
 
 ## Dónde está cada cosa
