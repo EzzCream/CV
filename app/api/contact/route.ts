@@ -1,10 +1,11 @@
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 import { Resend } from 'resend';
-import { siteUrl } from '@/lib/content';
+import { profile, siteUrl } from '@/lib/content';
 import { contactSchema } from '@/lib/contact';
 import type { ContactResponse, Field, FieldError } from '@/lib/contact-fields';
 import { buildEmail } from '@/lib/mail';
+import { buildConfirmation } from '@/lib/mail-confirmation';
 
 const MAX_BODY = 10 * 1024;
 const MIN_FILL_MS = 3000;
@@ -98,10 +99,24 @@ export async function POST(req: Request) {
     return json({ ok: false, error: 'server' }, 500);
   }
 
-  const { error } = await new Resend(key).emails.send({ from, to, replyTo: data.email, subject, text, html });
+  const resend = new Resend(key);
+  const { error } = await resend.emails.send({ from, to, replyTo: data.email, subject, text, html });
   if (error) {
     console.error(`[contact] resend error: ${error.name}`);
     return json({ ok: false, error: 'server' }, 502);
   }
+
+  // confirmación al remitente (MAIL-06): texto fijo, sin su mensaje; si falla, el envío a Oscar ya salió
+  const confirmation = buildConfirmation({ name: data.name, reason: data.reason, locale: data.locale });
+  const address = /<([^>]+)>/.exec(from)?.[1] ?? from;
+  const sent = await resend.emails.send({
+    from: `${profile.person.firstName.split(' ')[0]} ${profile.person.lastName.split(' ')[0]} <${address}>`,
+    to: data.email,
+    replyTo: to,
+    subject: confirmation.subject,
+    text: confirmation.text,
+    html: confirmation.html,
+  });
+  if (sent.error) console.error(`[contact] confirmation error: ${sent.error.name}`);
   return json({ ok: true });
 }

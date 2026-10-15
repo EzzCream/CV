@@ -260,6 +260,20 @@
       "rateLimited": "Enviaste varios mensajes seguidos. Prueba de nuevo en una hora o escríbeme a {email}.",
       "network": "No se pudo enviar. Revisa tu conexión o escríbeme a {email}.",
       "server": "No se pudo enviar por un error del servidor. Escríbeme a {email}."
+    },
+    "confirmation": {
+      "subject": "Recibí tu mensaje",
+      "preheader": "Gracias por escribir. Te contesto a este mismo correo.",
+      "label": "mensaje-recibido",
+      "greeting": "Hola, {name}.",
+      "body": "Recibí tu mensaje desde ezzcream.space. Lo leo yo y te contesto a este mismo correo.",
+      "reason": "Motivo",
+      "received": "Recibido",
+      "replyHint": "Si quieres agregar algo, responde a este correo y me llega directo.",
+      "signoff": "Saludos,",
+      "role": "Full Stack Developer, Ciudad de México",
+      "site": "Portafolio",
+      "footer": "Recibes este correo porque alguien escribió esta dirección en el formulario de contacto de ezzcream.space. Si no fuiste tú, puedes ignorarlo."
     }
   },
   "cv": {

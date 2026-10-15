@@ -207,7 +207,7 @@ Modelo de datos mínimo (ilustrativo):
 | MAIL-03 | P0 | Antispam: campo honeypot oculto + tiempo mínimo de llenado (3 s) + Cloudflare Turnstile en modo invisible. | Envíos de bot se descartan sin enviar correo. |
 | MAIL-04 | P0 | Límite de 5 envíos por IP por hora (Upstash Redis / Vercel KV). | El sexto envío → `429` con mensaje traducido. |
 | MAIL-05 | P0 | El correo llega a `CONTACT_TO` (variable de entorno) con `Reply-To` del remitente, asunto `[Portafolio] {motivo}: {nombre}`, y versión texto + HTML con el contenido escapado. | Responder desde Gmail contesta al remitente. |
-| MAIL-06 | P0 | **Sin auto-respuesta al remitente** que repita su mensaje (evita que se use la página para enviar spam a terceros). La confirmación es en pantalla. | Solo sale un correo por envío, a Oscar. |
+| MAIL-06 | P0 | Confirmación al remitente con texto fijo del diccionario (nombre, motivo y fecha) y `Reply-To` a `CONTACT_TO`. **Nunca repite el mensaje** ni contenido libre del remitente, para que la página no sirva para mandar spam a terceros. Si la confirmación falla, el envío a Oscar se da por bueno. Cambio pedido por Oscar el 14 oct 2026 (antes: sin auto-respuesta). | Salen dos correos por envío: el de Oscar y la confirmación; la confirmación no contiene el mensaje. |
 | MAIL-07 | P0 | Estados de UI: enviando, enviado, error de validación, error de red, límite alcanzado. Mensajes en el idioma activo, anunciados con `aria-live`. | Probado en e2e con el proveedor simulado. |
 | MAIL-08 | P0 | Los logs no guardan el mensaje ni el correo del remitente. | Revisión de código. |
 | MAIL-09 | P0 | Solo se aceptan peticiones del propio dominio (comprobación de `Origin`) y `Content-Type: application/json`, cuerpo máximo 10 KB. | Petición desde otro origen → `403`. |

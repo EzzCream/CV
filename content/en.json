@@ -260,6 +260,20 @@
       "rateLimited": "You've sent several messages in a row. Try again in an hour or email me at {email}.",
       "network": "Couldn't send it. Check your connection or email me at {email}.",
       "server": "Couldn't send it because of a server error. Email me at {email}."
+    },
+    "confirmation": {
+      "subject": "I got your message",
+      "preheader": "Thanks for writing. I'll reply to this same address.",
+      "label": "message-received",
+      "greeting": "Hi, {name}.",
+      "body": "Your message from ezzcream.space came through. I read every one myself and I'll reply to this address.",
+      "reason": "Reason",
+      "received": "Received",
+      "replyHint": "If you want to add anything, just reply to this email and it comes straight to me.",
+      "signoff": "Best,",
+      "role": "Full Stack Developer, Mexico City",
+      "site": "Portfolio",
+      "footer": "You're getting this because someone entered this address in the contact form at ezzcream.space. If it wasn't you, you can ignore it."
     }
   },
   "cv": {
