@@ -1,0 +1,287 @@
+{
+  "meta": {
+    "title": "Oscar Antonio Rodríguez Carmona | Full Stack Developer",
+    "description": "Full stack developer in Mexico City. React, TypeScript, FastAPI and Node.js. Now at ArgusEye, on its diagram editor and a layout engine in Rust and WebAssembly.",
+    "ogAlt": "Oscar Antonio Rodríguez Carmona, Full Stack Developer"
+  },
+  "sections": {
+    "experience": "experience",
+    "projects": "projects",
+    "skills": "skills",
+    "about": "about",
+    "contact": "contact"
+  },
+  "nav": {
+    "experience": "Experience",
+    "projects": "Projects",
+    "skills": "Skills",
+    "about": "About",
+    "contact": "Contact",
+    "home": "Oscar Rodríguez, go to top"
+  },
+  "ui": {
+    "skip": "Skip to content",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "themeLight": "Light theme",
+    "themeDark": "Dark theme",
+    "themeToggle": "Change theme",
+    "language": "Español",
+    "languageLabel": "View this page in Spanish",
+    "present": "now",
+    "months": "{count} months",
+    "external": "(opens in a new tab)"
+  },
+  "hero": {
+    "lead": "I build web products end to end: React and TypeScript on the front, FastAPI and Node.js services behind them, and the cloud setup that keeps them running.",
+    "ctaContact": "Get in touch",
+    "ctaCv": "Download CV (PDF)",
+    "trailLabel": "Animated background of code characters",
+    "next": "About"
+  },
+  "experience": {
+    "title": "Experience",
+    "meta": "5 roles since 2022",
+    "more": "Show all highlights",
+    "less": "Show less",
+    "items": {
+      "arguseye": {
+        "role": "Software Developer",
+        "summary": "SaaS cybersecurity platform for threat modeling and regulatory compliance.",
+        "highlights": [
+          "Designed the diagram layout and edge-routing engine in Rust, compiled to WebAssembly: hierarchical layout and A* grid routing. It replaced the JavaScript version and has parity tests in CI.",
+          "Work on the data flow diagram editor: layers, trust boundaries, connection rules between actors and assets, and keyboard shortcuts.",
+          "Built a Slack bot from scratch in Python that lets users look up projects and threats and chat with the platform's AI copilot.",
+          "Shipped Slack account linking and read-only API keys that revoke themselves automatically.",
+          "Redesigned the company site in Next.js, with a custom blog editor, a careers page and technical SEO."
+        ]
+      },
+      "rommaana": {
+        "role": "Full Stack Developer",
+        "summary": "Embedded insurance (Insurance as a Service) for Saudi Arabia. The brand became TrustMango in 2026.",
+        "highlights": [
+          "Lead developer of the React B2B portal: policies, products, coverages, partners, users, analytics and MFA sign-in.",
+          "Built the claims app and its FastAPI backend: evidence uploads to Google Cloud Storage with signed URLs, SMS notifications through Twilio and role-based permissions.",
+          "Ran the Google Cloud infrastructure with Terraform (Cloud Run, load balancer, CDN and Cloud Armor) and cut the cost of idle services.",
+          "Led the technical side of the TrustMango rebrand: new environments and domains, an API docs portal and an English/Arabic landing page shipped in two days."
+        ]
+      },
+      "artifields": {
+        "role": "Full Stack Developer",
+        "summary": "",
+        "highlights": [
+          "Owned the frontend and the UX/UI design: flows, screens and components in React and SASS.",
+          "Built REST APIs with Node.js and Express on an agile team with code reviews."
+        ]
+      },
+      "monific": {
+        "role": "Front-end Developer",
+        "summary": "",
+        "highlights": [
+          "Built Angular modules and their business logic.",
+          "Wrote APIs with Nest.js and helped document the security policies."
+        ]
+      },
+      "schneider": {
+        "role": "Computer Science Intern",
+        "summary": "",
+        "highlights": [
+          "Wrote Java and Spring endpoints for internal systems.",
+          "Investigated and fixed critical transactions in Oracle Database.",
+          "Built Angular components for an internal tool."
+        ]
+      }
+    },
+    "icons": {
+      "argus": "ArgusEye logo: an A with a dot in the center",
+      "pomegranate": "Pomegranate: \"rommaana\" in Arabic",
+      "sprout": "Sprout",
+      "star": "Star",
+      "bolt": "Bolt: Schneider Electric"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "meta": "Personal, with the code on GitHub",
+    "repo": "View code",
+    "demo": "View demo",
+    "architecture": "Architecture",
+    "flowTo": "to",
+    "items": {
+      "health-app": {
+        "kind": "Full stack monorepo",
+        "summary": "Health app with an API, a web client, a mobile app and an AI worker that processes queued jobs.",
+        "highlights": [
+          "The API answers 202 right away and the worker calls the model in the background through BullMQ and Redis; clients poll the job status.",
+          "Sessions use 15-minute access tokens and rotating refresh tokens: replaying a spent one revokes the whole family.",
+          "Zod schemas and types live in a shared package so the API and the worker can't drift apart."
+        ],
+        "nodes": {
+          "web": "Web (React)",
+          "mobile": "Mobile (Expo)",
+          "api": "API (Express)",
+          "queue": "Queue (BullMQ)",
+          "worker": "AI worker",
+          "db": "MongoDB"
+        }
+      },
+      "phantomsneakers": {
+        "kind": "MERN store",
+        "summary": "Sneaker store with a React frontend and an Express and MongoDB backend.",
+        "highlights": [
+          "Sign-up and login with JWT and bcrypt-hashed passwords.",
+          "PayPal checkout (sandbox) from the cart."
+        ],
+        "nodes": {
+          "web": "Web (React)",
+          "api": "API (Express)",
+          "pay": "PayPal",
+          "db": "MongoDB"
+        }
+      },
+      "backend": {
+        "kind": "E-commerce API",
+        "summary": "Online store backend with Node.js, Express and MongoDB.",
+        "highlights": [
+          "REST and GraphQL API with an MVC, DAO and DTO structure.",
+          "Login with Passport and bcrypt, email notifications with Nodemailer and SMS with Twilio.",
+          "Tests with Mocha and a server running in cluster mode."
+        ],
+        "nodes": {
+          "client": "Client",
+          "api": "REST / GraphQL",
+          "notify": "Email / SMS",
+          "db": "MongoDB"
+        }
+      },
+      "michistore": {
+        "kind": "React e-commerce",
+        "summary": "Online store for cat products.",
+        "highlights": [
+          "Cart built on the Context API, with category and product routes in React Router.",
+          "Catalog and orders stored in Firebase."
+        ],
+        "nodes": {
+          "web": "Web (React)",
+          "state": "Cart (Context)",
+          "db": "Firebase"
+        }
+      }
+    }
+  },
+  "skills": {
+    "title": "Skills",
+    "meta": "Each one linked to where I used it",
+    "usedIn": "Used at",
+    "groups": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "systems": "Systems",
+      "data": "Data",
+      "cloud": "Cloud & DevOps",
+      "practices": "Practices"
+    },
+    "labels": {
+      "rbac": "Role and scope-based access control",
+      "auth": "JWT / Firebase authentication",
+      "llm": "Language model integrations"
+    }
+  },
+  "about": {
+    "title": "About",
+    "paragraphs": [
+      "I'm Oscar. I studied Computer Science at IPN and I've worked as a developer since 2022. I'm happiest following a feature all the way through: the screen, the API, the database and the deploy.",
+      "JavaScript and TypeScript are still my favorite languages, though lately I spend a lot of time in Rust and Python.",
+      "Away from code I draw and tattoo (<tattoo>@ezz.tattoo</tattoo>). For a year I also designed and sold enamel pins (<pins>@meowpin._</pins>)."
+    ],
+    "photoAlt": "Oscar Antonio Rodríguez Carmona",
+    "languagesTitle": "Languages",
+    "languages": [
+      {
+        "name": "Spanish",
+        "level": "Native"
+      },
+      {
+        "name": "English",
+        "level": "Conversational and technical: I use it every day with international teams, in code and in documentation, and I have experience in the United States."
+      }
+    ]
+  },
+  "education": {
+    "title": "Education",
+    "degreesTitle": "Degrees",
+    "coursesTitle": "Courses",
+    "status": {
+      "inProgress": "In progress",
+      "done": "Completed",
+      "degreePending": "Degree in process"
+    },
+    "items": {
+      "master": "Master's in Software Architecture",
+      "informatics": "B.S. in Computer Science (Informatics)",
+      "communication": "B.A. in Digital Communication"
+    },
+    "courses": {
+      "bootcamp": "Full Stack Bootcamp",
+      "react": "React JS",
+      "backend": "Backend Development",
+      "web": "Web Development"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "lead": "Have a role, a project or a question? Write to me here and I'll reply to your email.",
+    "direct": "Or email me directly",
+    "copy": "Copy email",
+    "copied": "Email copied",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "reason": "Reason",
+      "reasons": {
+        "job": "Job opportunity",
+        "freelance": "Freelance project",
+        "other": "Something else"
+      },
+      "message": "Message",
+      "messageHint": "At least 20 characters.",
+      "honeypot": "Leave this field empty",
+      "submit": "Send message",
+      "sending": "Sending...",
+      "success": "Message sent. I'll reply to {email}.",
+      "sendAnother": "Send another message"
+    },
+    "errors": {
+      "required": "This field is required.",
+      "nameLength": "Use between 2 and 80 characters.",
+      "email": "Check the email address, it looks incomplete.",
+      "messageShort": "Write at least 20 characters.",
+      "messageLong": "Messages can be up to 3000 characters.",
+      "rateLimited": "You've sent several messages in a row. Try again in an hour or email me at {email}.",
+      "network": "Couldn't send it. Check your connection or email me at {email}.",
+      "server": "Couldn't send it because of a server error. Email me at {email}."
+    }
+  },
+  "cv": {
+    "title": "Resume | Oscar Antonio Rodríguez Carmona",
+    "summary": "Full stack developer based in Mexico City, working since 2022. I use React and TypeScript on the front end, FastAPI and Node.js on the back end, and Google Cloud with Terraform for deployment. At ArgusEye I designed the diagram layout engine in Rust and WebAssembly; before that I was the lead developer of the Rommaana / TrustMango B2B insurance portal.",
+    "headings": {
+      "summary": "Profile",
+      "experience": "Experience",
+      "projects": "Personal projects",
+      "skills": "Skills",
+      "education": "Education",
+      "courses": "Courses",
+      "languages": "Languages"
+    }
+  },
+  "footer": {
+    "rights": "{year} Oscar Antonio Rodríguez Carmona",
+    "source": "Source code for this site"
+  },
+  "notFound": {
+    "title": "This page doesn't exist",
+    "body": "The link may be mistyped, or the page may have moved.",
+    "back": "Back to home"
+  }
+}

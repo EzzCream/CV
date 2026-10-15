@@ -1,0 +1,565 @@
+{
+  "person": {
+    "firstName": "Oscar Antonio",
+    "lastName": "Rodríguez Carmona",
+    "fullName": "Oscar Antonio Rodríguez Carmona",
+    "jobTitle": "Full Stack Developer",
+    "email": "oscar.7n7@gmail.com",
+    "phone": "+52 56 5284 5253",
+    "city": "Ciudad de México",
+    "country": "MX",
+    "site": "https://ezzcream.space",
+    "photo": "/images/oscar.webp"
+  },
+  "links": {
+    "github": "https://github.com/EzzCream",
+    "linkedin": "https://www.linkedin.com/in/oscar-antonio-rodr%C3%ADguez-carmona-683a7821a/",
+    "tattoo": "https://www.instagram.com/ezz.tattoo/",
+    "pins": "https://www.instagram.com/meowpin._/",
+    "source": "https://github.com/EzzCream/CV"
+  },
+  "cv": {
+    "es": "/cv/Oscar-Rodriguez-Carmona-CV-ES.pdf",
+    "en": "/cv/Oscar-Rodriguez-Carmona-CV-EN.pdf"
+  },
+  "experience": [
+    {
+      "id": "arguseye",
+      "company": "ArgusEye",
+      "url": "https://arguseye.ai",
+      "start": "2025-11",
+      "end": null,
+      "stack": [
+        "React",
+        "TypeScript",
+        "Rust",
+        "WebAssembly",
+        "FastAPI",
+        "PostgreSQL",
+        "Redis",
+        "Next.js",
+        "Slack API"
+      ],
+      "icon": "argus"
+    },
+    {
+      "id": "rommaana",
+      "company": "Rommaana / TrustMango",
+      "url": "https://trustmango.sa",
+      "start": "2025-02",
+      "end": "2026-09",
+      "stack": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "FastAPI",
+        "PostgreSQL",
+        "Firebase",
+        "Google Cloud",
+        "Terraform",
+        "Twilio"
+      ],
+      "icon": "pomegranate"
+    },
+    {
+      "id": "artifields",
+      "company": "Artifields",
+      "url": null,
+      "start": "2024-03",
+      "end": "2024-10",
+      "stack": [
+        "React",
+        "SASS",
+        "Node.js",
+        "Express"
+      ],
+      "icon": "sprout"
+    },
+    {
+      "id": "monific",
+      "company": "Monific",
+      "url": null,
+      "start": "2023-11",
+      "end": "2024-02",
+      "stack": [
+        "Angular",
+        "Nest.js"
+      ],
+      "icon": "star"
+    },
+    {
+      "id": "schneider",
+      "company": "Schneider Electric",
+      "url": null,
+      "start": "2022",
+      "end": "2023",
+      "durationMonths": 4,
+      "stack": [
+        "Java",
+        "Spring",
+        "Oracle",
+        "Angular"
+      ],
+      "icon": "bolt"
+    }
+  ],
+  "projects": [
+    {
+      "id": "health-app",
+      "name": "Health-app",
+      "year": 2026,
+      "repo": "https://github.com/EzzCream/Health-app",
+      "demo": null,
+      "stack": [
+        "Bun",
+        "TypeScript",
+        "Express",
+        "React",
+        "Expo",
+        "BullMQ",
+        "Redis",
+        "MongoDB",
+        "Zod"
+      ],
+      "architecture": {
+        "nodes": [
+          {
+            "id": "web"
+          },
+          {
+            "id": "mobile"
+          },
+          {
+            "id": "api"
+          },
+          {
+            "id": "queue"
+          },
+          {
+            "id": "worker"
+          },
+          {
+            "id": "db",
+            "store": true
+          }
+        ],
+        "edges": [
+          [
+            "web",
+            "api"
+          ],
+          [
+            "mobile",
+            "api"
+          ],
+          [
+            "api",
+            "queue"
+          ],
+          [
+            "queue",
+            "worker"
+          ],
+          [
+            "api",
+            "db"
+          ],
+          [
+            "worker",
+            "db"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "phantomsneakers",
+      "name": "PhantomSneakers",
+      "year": 2023,
+      "repo": "https://github.com/EzzCream/HotKey",
+      "demo": null,
+      "stack": [
+        "React",
+        "Vite",
+        "Express",
+        "MongoDB",
+        "JWT",
+        "PayPal"
+      ],
+      "architecture": {
+        "nodes": [
+          {
+            "id": "web"
+          },
+          {
+            "id": "api"
+          },
+          {
+            "id": "pay"
+          },
+          {
+            "id": "db",
+            "store": true
+          }
+        ],
+        "edges": [
+          [
+            "web",
+            "api"
+          ],
+          [
+            "api",
+            "pay"
+          ],
+          [
+            "api",
+            "db"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "backend",
+      "name": "Backend e-commerce",
+      "year": 2022,
+      "repo": "https://github.com/EzzCream/Back-End",
+      "demo": null,
+      "stack": [
+        "Node.js",
+        "Express",
+        "GraphQL",
+        "MongoDB",
+        "Passport",
+        "Mocha",
+        "Twilio"
+      ],
+      "architecture": {
+        "nodes": [
+          {
+            "id": "client"
+          },
+          {
+            "id": "api"
+          },
+          {
+            "id": "notify"
+          },
+          {
+            "id": "db",
+            "store": true
+          }
+        ],
+        "edges": [
+          [
+            "client",
+            "api"
+          ],
+          [
+            "api",
+            "notify"
+          ],
+          [
+            "api",
+            "db"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "michistore",
+      "name": "MichiStore",
+      "year": 2022,
+      "repo": "https://github.com/EzzCream/MichiStore",
+      "demo": null,
+      "stack": [
+        "React",
+        "React Router",
+        "Context API",
+        "Firebase"
+      ],
+      "architecture": {
+        "nodes": [
+          {
+            "id": "web"
+          },
+          {
+            "id": "state"
+          },
+          {
+            "id": "db",
+            "store": true
+          }
+        ],
+        "edges": [
+          [
+            "web",
+            "state"
+          ],
+          [
+            "web",
+            "db"
+          ]
+        ]
+      }
+    }
+  ],
+  "skills": [
+    {
+      "id": "frontend",
+      "items": [
+        {
+          "name": "React",
+          "usedIn": [
+            "arguseye",
+            "rommaana",
+            "artifields",
+            "health-app",
+            "phantomsneakers",
+            "michistore"
+          ]
+        },
+        {
+          "name": "TypeScript",
+          "usedIn": [
+            "arguseye",
+            "rommaana",
+            "health-app"
+          ]
+        },
+        {
+          "name": "Next.js",
+          "usedIn": [
+            "arguseye"
+          ]
+        },
+        {
+          "name": "Angular",
+          "usedIn": [
+            "monific",
+            "schneider"
+          ]
+        },
+        {
+          "name": "Tailwind CSS",
+          "usedIn": [
+            "rommaana"
+          ]
+        },
+        {
+          "name": "MUI",
+          "usedIn": [
+            "arguseye"
+          ]
+        },
+        {
+          "name": "SASS",
+          "usedIn": [
+            "artifields"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "backend",
+      "items": [
+        {
+          "name": "Python (FastAPI)",
+          "usedIn": [
+            "arguseye",
+            "rommaana"
+          ]
+        },
+        {
+          "name": "Node.js (Express)",
+          "usedIn": [
+            "artifields",
+            "health-app",
+            "phantomsneakers",
+            "backend"
+          ]
+        },
+        {
+          "name": "Nest.js",
+          "usedIn": [
+            "monific"
+          ]
+        },
+        {
+          "name": "Java (Spring)",
+          "usedIn": [
+            "schneider"
+          ]
+        },
+        {
+          "name": "GraphQL",
+          "usedIn": [
+            "backend"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "systems",
+      "items": [
+        {
+          "name": "Rust",
+          "usedIn": [
+            "arguseye"
+          ]
+        },
+        {
+          "name": "WebAssembly",
+          "usedIn": [
+            "arguseye"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "items": [
+        {
+          "name": "PostgreSQL",
+          "usedIn": [
+            "arguseye",
+            "rommaana"
+          ]
+        },
+        {
+          "name": "MongoDB",
+          "usedIn": [
+            "health-app",
+            "phantomsneakers",
+            "backend"
+          ]
+        },
+        {
+          "name": "Redis",
+          "usedIn": [
+            "arguseye",
+            "health-app"
+          ]
+        },
+        {
+          "name": "Firebase",
+          "usedIn": [
+            "rommaana",
+            "michistore"
+          ]
+        },
+        {
+          "name": "Oracle",
+          "usedIn": [
+            "schneider"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cloud",
+      "items": [
+        {
+          "name": "Google Cloud (Cloud Run)",
+          "usedIn": [
+            "rommaana"
+          ]
+        },
+        {
+          "name": "Terraform",
+          "usedIn": [
+            "rommaana"
+          ]
+        },
+        {
+          "name": "GitHub Actions",
+          "usedIn": [
+            "rommaana"
+          ]
+        },
+        {
+          "name": "Docker",
+          "usedIn": [
+            "health-app"
+          ]
+        },
+        {
+          "name": "Vercel / Render",
+          "usedIn": [
+            "arguseye"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "practices",
+      "items": [
+        {
+          "id": "rbac",
+          "usedIn": [
+            "rommaana",
+            "arguseye"
+          ]
+        },
+        {
+          "id": "auth",
+          "usedIn": [
+            "health-app",
+            "phantomsneakers",
+            "rommaana"
+          ]
+        },
+        {
+          "id": "llm",
+          "usedIn": [
+            "arguseye",
+            "health-app"
+          ]
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "id": "master",
+      "institution": "UTEL",
+      "start": "2026-09",
+      "end": null,
+      "status": "inProgress"
+    },
+    {
+      "id": "informatics",
+      "institution": "UPIICSA - IPN",
+      "start": "2020",
+      "end": "2024",
+      "status": "done"
+    },
+    {
+      "id": "communication",
+      "institution": "UTEL",
+      "start": "2023",
+      "end": "2026",
+      "status": "degreePending"
+    }
+  ],
+  "courses": [
+    {
+      "id": "bootcamp",
+      "issuer": "Ucamp",
+      "months": 7
+    },
+    {
+      "id": "react",
+      "issuer": "CoderHouse",
+      "months": 4
+    },
+    {
+      "id": "backend",
+      "issuer": "CoderHouse",
+      "months": 7
+    },
+    {
+      "id": "web",
+      "issuer": "CoderHouse",
+      "months": 4
+    }
+  ]
+}

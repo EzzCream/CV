@@ -1,0 +1,287 @@
+{
+  "meta": {
+    "title": "Oscar Antonio Rodríguez Carmona | Full Stack Developer",
+    "description": "Desarrollador full stack en CDMX. React, TypeScript, FastAPI y Node.js. Hoy trabajo en el editor de diagramas de ArgusEye y en su motor de layout en Rust y WebAssembly.",
+    "ogAlt": "Oscar Antonio Rodríguez Carmona, Full Stack Developer"
+  },
+  "sections": {
+    "experience": "experiencia",
+    "projects": "proyectos",
+    "skills": "habilidades",
+    "about": "sobre-mi",
+    "contact": "contacto"
+  },
+  "nav": {
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "skills": "Habilidades",
+    "about": "Sobre mí",
+    "contact": "Contacto",
+    "home": "Oscar Rodríguez, ir al inicio"
+  },
+  "ui": {
+    "skip": "Saltar al contenido",
+    "menuOpen": "Abrir menú",
+    "menuClose": "Cerrar menú",
+    "themeLight": "Tema claro",
+    "themeDark": "Tema oscuro",
+    "themeToggle": "Cambiar tema",
+    "language": "English",
+    "languageLabel": "Ver esta página en inglés",
+    "present": "hoy",
+    "months": "{count} meses",
+    "external": "(se abre en otra pestaña)"
+  },
+  "hero": {
+    "lead": "Construyo productos web completos: interfaces en React y TypeScript, servicios en FastAPI y Node.js, y la infraestructura en la nube que los sostiene.",
+    "ctaContact": "Escríbeme",
+    "ctaCv": "Descargar CV (PDF)",
+    "trailLabel": "Fondo animado de caracteres de código",
+    "next": "Sobre mí"
+  },
+  "experience": {
+    "title": "Experiencia",
+    "meta": "5 puestos desde 2022",
+    "more": "Ver todos los logros",
+    "less": "Ver menos",
+    "items": {
+      "arguseye": {
+        "role": "Software Developer",
+        "summary": "Plataforma SaaS de ciberseguridad para modelado de amenazas y cumplimiento normativo.",
+        "highlights": [
+          "Diseñé el motor de layout y enrutamiento de diagramas en Rust, compilado a WebAssembly: layout jerárquico y aristas enrutadas con A* sobre una rejilla. Sustituyó a la versión en JavaScript y tiene pruebas de paridad en CI.",
+          "Trabajo en el editor de diagramas de flujo de datos: capas, trust boundaries, reglas de conexión entre actores y assets, y atajos de teclado.",
+          "Hice desde cero un bot de Slack en Python para consultar proyectos y amenazas, y conversar con el copiloto de IA de la plataforma.",
+          "Implementé la vinculación de cuentas de Slack y las API keys de solo lectura con revocación automática.",
+          "Rediseñé el sitio corporativo en Next.js, con un editor de blog propio, página de empleos y SEO técnico."
+        ]
+      },
+      "rommaana": {
+        "role": "Full Stack Developer",
+        "summary": "Seguros embebidos (Insurance as a Service) para Arabia Saudita. En 2026 la marca pasó a llamarse TrustMango.",
+        "highlights": [
+          "Fui el principal desarrollador del portal B2B en React: pólizas, productos, coberturas, partners, usuarios, analítica y acceso con MFA.",
+          "Desarrollé la app de reclamos y su backend en FastAPI: evidencias en Google Cloud Storage con URLs firmadas, avisos por SMS con Twilio y permisos por rol.",
+          "Mantuve la infraestructura en Google Cloud con Terraform (Cloud Run, balanceador, CDN y Cloud Armor) y bajé el costo de los servicios en reposo.",
+          "Llevé la parte técnica del cambio de marca a TrustMango: entornos y dominios nuevos, portal de documentación de la API y una landing en inglés y árabe que salió en dos días."
+        ]
+      },
+      "artifields": {
+        "role": "Full Stack Developer",
+        "summary": "",
+        "highlights": [
+          "Me encargué del frontend y del diseño UX/UI: flujos, pantallas y componentes en React y SASS.",
+          "Construí APIs REST con Node.js y Express, en un equipo ágil con code reviews."
+        ]
+      },
+      "monific": {
+        "role": "Front-end Developer",
+        "summary": "",
+        "highlights": [
+          "Desarrollé módulos en Angular con su lógica de negocio.",
+          "Construí APIs con Nest.js y ayudé a documentar las políticas de seguridad."
+        ]
+      },
+      "schneider": {
+        "role": "Computer Science Intern",
+        "summary": "",
+        "highlights": [
+          "Escribí endpoints en Java y Spring para sistemas internos.",
+          "Analicé y corregí transacciones críticas en Oracle Database.",
+          "Hice componentes en Angular para una herramienta interna."
+        ]
+      }
+    },
+    "icons": {
+      "argus": "Logo de ArgusEye: una A con un punto al centro",
+      "pomegranate": "Granada: \"rommaana\" en árabe",
+      "sprout": "Brote",
+      "star": "Estrella",
+      "bolt": "Rayo: Schneider Electric"
+    }
+  },
+  "projects": {
+    "title": "Proyectos",
+    "meta": "Personales, con el código en GitHub",
+    "repo": "Ver código",
+    "demo": "Ver demo",
+    "architecture": "Arquitectura",
+    "flowTo": "hacia",
+    "items": {
+      "health-app": {
+        "kind": "Monorepo full stack",
+        "summary": "App de salud con API, web, app móvil y un worker de IA que procesa tareas en cola.",
+        "highlights": [
+          "La API responde 202 al instante y el worker hace la llamada al modelo en segundo plano con BullMQ y Redis; el cliente consulta el estado del trabajo.",
+          "Sesiones con tokens de acceso de 15 minutos y refresh rotativo: si alguien reutiliza uno ya consumido, se revoca toda la familia.",
+          "Los esquemas de Zod y los tipos viven en un paquete compartido para que la API y el worker no se desincronicen."
+        ],
+        "nodes": {
+          "web": "Web (React)",
+          "mobile": "Móvil (Expo)",
+          "api": "API (Express)",
+          "queue": "Cola (BullMQ)",
+          "worker": "Worker IA",
+          "db": "MongoDB"
+        }
+      },
+      "phantomsneakers": {
+        "kind": "Tienda MERN",
+        "summary": "Tienda de tenis con frontend en React y backend en Express y MongoDB.",
+        "highlights": [
+          "Registro e inicio de sesión con JWT y contraseñas cifradas con bcrypt.",
+          "Pago con PayPal (entorno sandbox) desde el carrito."
+        ],
+        "nodes": {
+          "web": "Web (React)",
+          "api": "API (Express)",
+          "pay": "PayPal",
+          "db": "MongoDB"
+        }
+      },
+      "backend": {
+        "kind": "API de e-commerce",
+        "summary": "Backend de una tienda en línea con Node.js, Express y MongoDB.",
+        "highlights": [
+          "API REST y GraphQL con arquitectura MVC, DAO y DTO.",
+          "Login con Passport y bcrypt, avisos por correo con Nodemailer y por SMS con Twilio.",
+          "Pruebas con Mocha y servidor en modo cluster."
+        ],
+        "nodes": {
+          "client": "Cliente",
+          "api": "REST / GraphQL",
+          "notify": "Correo / SMS",
+          "db": "MongoDB"
+        }
+      },
+      "michistore": {
+        "kind": "E-commerce en React",
+        "summary": "Tienda en línea de productos para gatos.",
+        "highlights": [
+          "Carrito con Context API y rutas por categoría y producto con React Router.",
+          "Catálogo y órdenes guardados en Firebase."
+        ],
+        "nodes": {
+          "web": "Web (React)",
+          "state": "Carrito (Context)",
+          "db": "Firebase"
+        }
+      }
+    }
+  },
+  "skills": {
+    "title": "Habilidades",
+    "meta": "Cada una con el lugar donde la usé",
+    "usedIn": "Usado en",
+    "groups": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "systems": "Sistemas",
+      "data": "Datos",
+      "cloud": "Cloud y DevOps",
+      "practices": "Prácticas"
+    },
+    "labels": {
+      "rbac": "Control de acceso por roles y scopes",
+      "auth": "Autenticación JWT / Firebase",
+      "llm": "Integración de modelos de lenguaje"
+    }
+  },
+  "about": {
+    "title": "Sobre mí",
+    "paragraphs": [
+      "Soy Oscar. Estudié Ciencias de la Informática en el IPN y trabajo como desarrollador desde 2022. Donde mejor me siento es siguiendo una función de punta a punta: la pantalla, la API, la base de datos y el despliegue.",
+      "JavaScript y TypeScript siguen siendo mis lenguajes favoritos, aunque últimamente paso mucho tiempo con Rust y Python.",
+      "Fuera del código dibujo y tatúo (<tattoo>@ezz.tattoo</tattoo>). Durante un año también diseñé y vendí pines metálicos (<pins>@meowpin._</pins>)."
+    ],
+    "photoAlt": "Oscar Antonio Rodríguez Carmona",
+    "languagesTitle": "Idiomas",
+    "languages": [
+      {
+        "name": "Español",
+        "level": "Nativo"
+      },
+      {
+        "name": "Inglés",
+        "level": "Conversacional y técnico: lo uso a diario con equipos internacionales, en código y en documentación. También tengo experiencia en Estados Unidos."
+      }
+    ]
+  },
+  "education": {
+    "title": "Educación",
+    "degreesTitle": "Títulos",
+    "coursesTitle": "Cursos",
+    "status": {
+      "inProgress": "En curso",
+      "done": "Concluida",
+      "degreePending": "En trámite de titulación"
+    },
+    "items": {
+      "master": "Maestría en Arquitectura de Software",
+      "informatics": "Licenciatura en Ciencias de la Informática",
+      "communication": "Licenciatura en Comunicación Digital"
+    },
+    "courses": {
+      "bootcamp": "Bootcamp Full Stack",
+      "react": "React JS",
+      "backend": "Desarrollo Backend",
+      "web": "Desarrollo Web"
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "lead": "¿Tienes un puesto, un proyecto o una pregunta? Escríbeme aquí y te contesto a tu correo.",
+    "direct": "También puedes escribirme directo",
+    "copy": "Copiar correo",
+    "copied": "Correo copiado",
+    "form": {
+      "name": "Nombre",
+      "email": "Correo",
+      "reason": "Motivo",
+      "reasons": {
+        "job": "Oferta de empleo",
+        "freelance": "Proyecto freelance",
+        "other": "Otro"
+      },
+      "message": "Mensaje",
+      "messageHint": "Mínimo 20 caracteres.",
+      "honeypot": "No llenes este campo",
+      "submit": "Enviar mensaje",
+      "sending": "Enviando...",
+      "success": "Mensaje enviado. Te contesto a {email}.",
+      "sendAnother": "Enviar otro mensaje"
+    },
+    "errors": {
+      "required": "Este campo es obligatorio.",
+      "nameLength": "Escribe entre 2 y 80 caracteres.",
+      "email": "Revisa el correo: parece incompleto.",
+      "messageShort": "Escribe al menos 20 caracteres.",
+      "messageLong": "El mensaje puede tener hasta 3000 caracteres.",
+      "rateLimited": "Enviaste varios mensajes seguidos. Prueba de nuevo en una hora o escríbeme a {email}.",
+      "network": "No se pudo enviar. Revisa tu conexión o escríbeme a {email}.",
+      "server": "No se pudo enviar por un error del servidor. Escríbeme a {email}."
+    }
+  },
+  "cv": {
+    "title": "CV | Oscar Antonio Rodríguez Carmona",
+    "summary": "Desarrollador full stack en Ciudad de México, trabajando desde 2022. Uso React y TypeScript en el frontend, FastAPI y Node.js en el backend, y Google Cloud con Terraform para desplegar. En ArgusEye diseñé el motor de layout de diagramas en Rust y WebAssembly; antes fui el principal desarrollador del portal B2B de seguros de Rommaana / TrustMango.",
+    "headings": {
+      "summary": "Perfil",
+      "experience": "Experiencia",
+      "projects": "Proyectos personales",
+      "skills": "Habilidades",
+      "education": "Educación",
+      "courses": "Cursos",
+      "languages": "Idiomas"
+    }
+  },
+  "footer": {
+    "rights": "{year} Oscar Antonio Rodríguez Carmona",
+    "source": "Código de este sitio"
+  },
+  "notFound": {
+    "title": "Esta página no existe",
+    "body": "Puede que el enlace esté mal escrito o que la página se haya movido.",
+    "back": "Volver al inicio"
+  }
+}
