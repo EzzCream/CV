@@ -51,6 +51,13 @@ describe('buildConfirmation', () => {
     expect(m.text).not.toMatch(/\r/);
   });
 
+  it('no lleva texto de relleno ni fuentes remotas que los filtros lean como spam', () => {
+    const m = buildConfirmation({ name: 'Ana', reason: 'job', locale: 'es', now });
+    expect((m.html.match(/<span/g) ?? []).length).toBeLessThan(10);
+    expect(m.html).toContain('/email/trail.png');
+    expect(m.html).not.toContain('fonts.googleapis.com');
+  });
+
   it('solo usa caracteres de teclado en el texto visible', () => {
     const m = buildConfirmation({ name: 'Ana', reason: 'job', locale: 'es', now });
     expect(m.text.match(/[^\x00-\x7FáéíóúüñÁÉÍÓÚÜÑ¿¡]/g)).toBeNull();
