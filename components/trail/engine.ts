@@ -9,7 +9,9 @@ const R = (a: number, b: number) => a + Math.random() * (b - a);
 const pick = <T,>(list: readonly T[]): T => list[Math.floor(Math.random() * list.length)] as T;
 const rndGlyph = () => GLYPHS.charCodeAt(Math.floor(Math.random() * GLYPHS.length));
 
-type Colors = { ink: string; paper: string; red: string };
+type Colors = { ink: string; paper: string; red: string; purple: string };
+// tinte de una celda: 0 sin color, 1 rojo, 2 morado
+type Tint = 0 | 1 | 2;
 type Point = { x: number; y: number };
 type FieldOptions = { decay: number; spread: number; blocks: boolean; maxAlpha: number; caret: boolean };
 
@@ -80,13 +82,13 @@ class Field {
     for (let s = 1; s <= steps; s++) this.inject(x0 + ((x1 - x0) * s) / steps, y0 + ((y1 - y0) * s) / steps, r, amt);
   }
 
-  cell(i: number, j: number, amt: number, ch?: number, red = false) {
+  cell(i: number, j: number, amt: number, ch?: number, tint: Tint = 0) {
     if (i < 0 || j < 0 || i >= this.cols || j >= this.rows) return;
     const k = j * this.cols + i;
     this.e[k] = Math.min(1.25, Math.max(this.e[k] ?? 0, amt));
     if (ch) {
       this.forced[k] = ch;
-      this.tint[k] = red ? 1 : 0;
+      this.tint[k] = tint;
     }
     this.awake = true;
   }
@@ -124,16 +126,16 @@ class Field {
           tint[k] = 0;
         }
         if (!forced[k] && Math.random() < v * 0.1) gl[k] = rndGlyph();
-        const x = i * cs, y = j * cs, red = tint[k] === 1, ch = String.fromCharCode(forced[k] || gl[k] || 32);
+        const x = i * cs, y = j * cs, t = tint[k], hue = t === 1 ? col.red : t === 2 ? col.purple : null, ch = String.fromCharCode(forced[k] || gl[k] || 32);
         if (opt.blocks && v > 0.5) {
           ctx.globalAlpha = 1;
-          ctx.fillStyle = red ? col.red : col.ink;
+          ctx.fillStyle = hue ?? col.ink;
           ctx.fillRect(x, y, cs, cs);
           ctx.globalAlpha = 0.55 + Math.min(0.45, v - 0.5);
-          ctx.fillStyle = red ? '#fff' : col.paper;
+          ctx.fillStyle = hue ? '#fff' : col.paper;
         } else {
           ctx.globalAlpha = Math.min(opt.maxAlpha, v * 2.1);
-          ctx.fillStyle = red ? col.red : col.ink;
+          ctx.fillStyle = hue ?? col.ink;
         }
         ctx.fillText(ch, x + cs / 2, y + cs / 2 + 1);
       }
@@ -304,7 +306,8 @@ const SHAPES: Record<string, Shape> = {
 };
 const DRAW_ORDER = ['michi', 'heart', 'cafe', 'code', 'eva02'] as const;
 const DRAW_WORDS: Record<(typeof DRAW_ORDER)[number], string> = { michi: 'MIAU', heart: '<3', cafe: 'CAFE', code: '{}</>', eva02: 'EVA' };
-const DRAW_RED = new Set<string>(['eva02']);
+// color de cada dibujo: el 02 en rojo y el corazón en morado; los demás en tinta
+const DRAW_TINT: Partial<Record<(typeof DRAW_ORDER)[number], Tint>> = { eva02: 1, heart: 2 };
 
 type Cell = { i: number; j: number; o: number; broken?: boolean };
 type Region = { i0: number; j0: number; cols: number; rows: number };
@@ -324,10 +327,10 @@ export function startTrail(o: TrailOptions): () => void {
   const finePointer = matchMedia('(pointer: fine)').matches;
   const font = `${o.trailFont}, ui-monospace, monospace`;
   const displayFont = `${o.displayFont}, Georgia, "Times New Roman", serif`;
-  let col: Colors = { ink: '#0C0E10', paper: '#E5E7E6', red: '#B5121B' };
+  let col: Colors = { ink: '#0C0E10', paper: '#E5E7E6', red: '#B5121B', purple: '#6B2BB5' };
   const readColors = () => {
     const s = getComputedStyle(document.documentElement);
-    col = { ink: s.getPropertyValue('--ink').trim(), paper: s.getPropertyValue('--paper').trim(), red: s.getPropertyValue('--red').trim() };
+    col = { ink: s.getPropertyValue('--ink').trim(), paper: s.getPropertyValue('--paper').trim(), red: s.getPropertyValue('--red').trim(), purple: s.getPropertyValue('--purple').trim() };
   };
   const colors = () => col;
 
@@ -404,7 +407,7 @@ export function startTrail(o: TrailOptions): () => void {
       const name = DRAW_ORDER[drawIdx++ % DRAW_ORDER.length]!;
       drawing = { name, ...maskFor(name, reg), built: 0, phase: 'build', t: now, word: DRAW_WORDS[name] };
     }
-    const dr = drawing, w = dr.word, red = DRAW_RED.has(dr.name);
+    const dr = drawing, w = dr.word, tint = DRAW_TINT[dr.name as (typeof DRAW_ORDER)[number]] ?? 0;
     const index = (c: { i: number; j: number }) => (reg.j0 + c.j) * f.cols + reg.i0 + c.i;
     // la difusión rellenaría los huecos (ojos, asa, contornos): se mantienen claros mientras el dibujo vive
     const keepHoles = () => {
@@ -415,7 +418,7 @@ export function startTrail(o: TrailOptions): () => void {
         f.tint[k] = 0;
       }
     };
-    const put = (c: Cell) => f.cell(reg.i0 + c.i, reg.j0 + c.j, 1.1, w.charCodeAt((c.i + c.j) % w.length), red);
+    const put = (c: Cell) => f.cell(reg.i0 + c.i, reg.j0 + c.j, 1.1, w.charCodeAt((c.i + c.j) % w.length), tint);
     if (dr.phase === 'build') {
       const n = Math.max(2, Math.ceil(dr.cells.length / 50));
       for (let k = 0; k < n && dr.built < dr.cells.length; k++) put(dr.cells[dr.built++]!);
