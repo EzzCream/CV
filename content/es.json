@@ -17,7 +17,7 @@
     "skills": "Habilidades",
     "about": "Sobre mí",
     "contact": "Contacto",
-    "home": "Oscar Rodríguez, ir al inicio"
+    "home": "ir al inicio"
   },
   "ui": {
     "skip": "Saltar al contenido",
@@ -264,7 +264,7 @@
   },
   "cv": {
     "title": "CV | Oscar Antonio Rodríguez Carmona",
-    "summary": "Desarrollador full stack en Ciudad de México, trabajando desde 2022. Uso React y TypeScript en el frontend, FastAPI y Node.js en el backend, y Google Cloud con Terraform para desplegar. En ArgusEye diseñé el motor de layout de diagramas en Rust y WebAssembly; antes fui el principal desarrollador del portal B2B de seguros de Rommaana / TrustMango.",
+    "summary": "Desarrollador full stack en Ciudad de México. Trabajo como desarrollador desde 2022, con React y TypeScript en el frontend, FastAPI y Node.js en el backend, y Google Cloud con Terraform para desplegar. En ArgusEye diseñé el motor de layout de diagramas en Rust y WebAssembly. Antes fui el principal desarrollador del portal B2B de seguros de Rommaana / TrustMango.",
     "headings": {
       "summary": "Perfil",
       "experience": "Experiencia",

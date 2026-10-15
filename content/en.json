@@ -17,7 +17,7 @@
     "skills": "Skills",
     "about": "About",
     "contact": "Contact",
-    "home": "Oscar Rodríguez, go to top"
+    "home": "go to top"
   },
   "ui": {
     "skip": "Skip to content",
@@ -42,7 +42,7 @@
   "experience": {
     "title": "Experience",
     "meta": "5 roles since 2022",
-    "more": "Show all highlights",
+    "more": "Show all achievements",
     "less": "Show less",
     "items": {
       "arguseye": {
@@ -264,7 +264,7 @@
   },
   "cv": {
     "title": "Resume | Oscar Antonio Rodríguez Carmona",
-    "summary": "Full stack developer based in Mexico City, working since 2022. I use React and TypeScript on the front end, FastAPI and Node.js on the back end, and Google Cloud with Terraform for deployment. At ArgusEye I designed the diagram layout engine in Rust and WebAssembly; before that I was the lead developer of the Rommaana / TrustMango B2B insurance portal.",
+    "summary": "Full stack developer based in Mexico City. I've worked as a developer since 2022, with React and TypeScript on the front end, FastAPI and Node.js on the back end, and Google Cloud with Terraform for deployment. At ArgusEye I designed the diagram layout engine in Rust and WebAssembly. Before that I was the lead developer of the Rommaana / TrustMango B2B insurance portal.",
     "headings": {
       "summary": "Profile",
       "experience": "Experience",
