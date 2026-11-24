@@ -34,3 +34,4 @@ npm run dev
 ## Variables de entorno
 
 Ver `.env.example`. En producción son obligatorias `RESEND_API_KEY`, `CONTACT_TO` y `CONTACT_FROM`. El dominio de `CONTACT_FROM` debe estar verificado en Resend. Upstash (límite de envíos compartido) y Turnstile son opcionales.
+Prueba de PR desde Core
